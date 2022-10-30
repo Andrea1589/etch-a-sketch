@@ -1,0 +1,10 @@
+.row {
+    display: flex;
+}
+
+.square {
+    border-style: solid;
+    border-color: black;
+    height: 25px;
+    width: 25px;
+}
