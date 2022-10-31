@@ -27,7 +27,7 @@ html{
 
 .square:hover {
     background-color: black;
-    border-color: black;
+    border-color: gray;
 }
 
 .container {
