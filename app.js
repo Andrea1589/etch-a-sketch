@@ -19,7 +19,7 @@ document.onmouseup = function(e){
 }
 
 function showGrid(numSquares){
-    document.getElementById("valRange").innerText = "Size: " + numSquares + " x " + numSquares;
+    document.getElementById("grid-size").innerText = "Size: " + numSquares + " x " + numSquares;
     setGrid(numSquares);
 }
 
@@ -44,5 +44,6 @@ function setGrid(numSquares){
 }
 
 function clearGrid(){
-
+    const gridSize = document.getElementById("grid-range").value;
+    setGrid(gridSize);
 }
