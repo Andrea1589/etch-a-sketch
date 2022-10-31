@@ -1,9 +1,10 @@
-setGrid();
+setGrid(16);
 
 document.onmousedown = function(e){
     document.onmousemove = function(e){
         if (e.target.className === "square") {
             e.target.style.backgroundColor = "black";
+            e.target.style.borderColor = "gray";
         }
     }
 }
@@ -12,19 +13,23 @@ document.onmouseup = function(e){
     document.onmousemove = function(e){
         if (e.target.className === "square") {
             e.target.style.backgroundColor = "none";
+            e.target.style.borderColor = "none";
         }
     }
 }
 
-function setGrid(){
-    const numSquares = prompt("How many squares per side do you want?","16");
+function showGrid(numSquares){
+    document.getElementById("valRange").innerText = numSquares;
+    setGrid(numSquares);
+}
+
+function setGrid(numSquares){
     const grid = document.getElementById("grid");
 
     //Remove actual grid (if exists)
     grid.innerHTML = "";
 
     //Generate NxN grid
-    if (numSquares >= 1 && numSquares <= 100){
         for (let i = 0; i < numSquares; i++) {
             const row = document.createElement("div");
             row.className = "row";
@@ -36,8 +41,8 @@ function setGrid(){
                 row.appendChild(square);
             }
         }
-    } else {
-        alert("The grid can have min 1 and max 100 squares.");
-        setGrid();
-    }
+}
+
+function clearGrid(){
+
 }
