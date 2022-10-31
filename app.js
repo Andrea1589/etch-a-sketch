@@ -24,16 +24,20 @@ function setGrid(){
     grid.innerHTML = "";
 
     //Generate NxN grid
-    for (let i = 0; i < numSquares; i++) {
-        const row = document.createElement("div");
-        row.className = "row";
-        grid.appendChild(row);
-        
-        for (let j = 0; j < numSquares; j++) {
-            const square = document.createElement("div");
-            square.className = "square";
-            row.appendChild(square);
+    if (numSquares >= 1 && numSquares <= 100){
+        for (let i = 0; i < numSquares; i++) {
+            const row = document.createElement("div");
+            row.className = "row";
+            grid.appendChild(row);
+            
+            for (let j = 0; j < numSquares; j++) {
+                const square = document.createElement("div");
+                square.className = "square";
+                row.appendChild(square);
+            }
         }
+    } else {
+        alert("The grid can have min 1 and max 100 squares.");
+        setGrid();
     }
-    
 }
