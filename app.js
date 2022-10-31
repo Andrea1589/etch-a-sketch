@@ -20,6 +20,10 @@ function setGrid(){
     const numSquares = prompt("How many squares per side do you want?","16");
     const grid = document.getElementById("grid");
 
+    //Remove actual grid (if exists)
+    grid.innerHTML = "";
+
+    //Generate NxN grid
     for (let i = 0; i < numSquares; i++) {
         const row = document.createElement("div");
         row.className = "row";
