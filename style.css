@@ -1,3 +1,7 @@
+#grid {
+    margin: 15px;
+}
+
 .row {
     display: flex;
 }
@@ -11,9 +15,5 @@
 }
 
 .square:hover {
-    background-color: black;
-}
-
-.hover {
     background-color: black;
 }
