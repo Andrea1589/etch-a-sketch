@@ -10,10 +10,23 @@
 <body>
     <div class="header">
         <h1>Etch-A-Sketch</h1>
-        <button onclick="setGrid()">Set grid</button>
     </div>
-    <div id="grid">
-        <!--Create nxn grid with JavaScript-->
+    <div class="container">
+        <div class="options">
+             <div>
+                <div id="valRange">16</div>
+                <input type="range" id="grid-size" name="grid-size" min="16" max="100" step="16" value="16" onchange="showGrid(this.value)">
+                <label for="grid-size"></label>
+            </div>
+            <button>Default</button>            
+            <button>Rainbow</button>            
+            <button>Cold</button>            
+            <button>Warm</button>      
+            <button onclick="clearGrid()">Clear</button>            
+        </div>
+        <div id="grid">
+            <!--Create NxN grid with JavaScript-->
+        </div>
     </div>
     <div class="footer">Copyright &copy; AndreaECS 2022</div>
     <script src="./app.js"></script>    
