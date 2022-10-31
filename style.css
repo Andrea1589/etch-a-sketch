@@ -1,17 +1,21 @@
 #grid {
+    display: flex;
+    flex-direction: column;
     margin: 15px;
+    width: 500px;
+    height: 500px;
 }
 
 .row {
     display: flex;
-}
+    height: 100%;
+ }
 
 .square {
     border-style: solid;
     border-width: 0.3px;
     border-color: black;
-    height: 25px;
-    width: 25px;
+    width: 100%;
 }
 
 .square:hover {
