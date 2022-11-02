@@ -3,25 +3,6 @@ let colorPalette = getColors('black');
 setGrid(16);
 drawSketch();
 
-// function blackPencil(){
-//     document.onmousedown = function(e){
-//         document.onmouseover = function(e){
-//             if (e.target.className === "square") {
-//                 e.target.style.backgroundColor = "black";
-//                 e.target.style.borderColor = "black";
-//             }
-//         }
-//     }
-//     document.onmouseup = function(e){
-//         document.onmouseover = function(e){
-//             if (e.target.className === "square") {
-//                 e.target.style.backgroundColor = "none";
-//                 e.target.style.borderColor = "none";
-//             }
-//         }
-//     }
-// }
-
 function drawSketch(){
     document.onmousedown = function(e){
         document.onmouseover = function(e){
@@ -50,7 +31,7 @@ function getRandomInt(min, max) {
 }
 
 function showGrid(numSquares){
-    document.getElementById("grid-size").innerText = "Size: " + numSquares + " x " + numSquares;
+    document.getElementById("grid-size").innerText = "SIZE: " + numSquares + " x " + numSquares;
     setGrid(numSquares);
 }
 
