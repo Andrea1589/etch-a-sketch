@@ -1,27 +1,90 @@
-let colorPalette = getColors('black');
+let selectedPalette = undefined;
+let selectedType = undefined;
+let currentHue = undefined;
+let toggleGradient = 1;
 
+getPalette();
+getType();
 setGrid(16);
 drawSketch();
 
 function drawSketch(){
+    console.log(document.eve)
     document.onmousedown = function(e){
+
         document.onmouseover = function(e){
+
             if (e.target.className == "square") {
-                let number = getRandomInt(0,colorPalette.length-1);
-                //console.log(number);
-                e.target.style.backgroundColor = colorPalette[number];
-                e.target.style.borderColor = colorPalette[number];
+
+            switch (selectedPalette) {
+                    case 'black':
+                        e.target.style.backgroundColor = 'black';
+                        e.target.style.borderColor = 'black';
+                        break;
+
+                    case 'rainbow':
+                        currentHue = getHue(currentHue,1,256);
+                        e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 60%)`;
+                        e.target.style.borderColor = `hsl(${currentHue}, 80%, 60%)`;
+                        break;
+
+                    case 'cold':
+                        currentHue = getHue(currentHue,160,255); //
+                        e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 65%)`;
+                        e.target.style.borderColor = `hsl(${currentHue}, 80%, 65%)`;
+                        break;
+
+                    case 'warm':
+                        currentHue = getHue(currentHue,1,100); //Warm colors from 1 to 100
+                        e.target.style.backgroundColor = `hsl(${currentHue}, 70%, 40%)`;
+                        e.target.style.borderColor = `hsl(${currentHue}, 70%, 40%)`;
+                        break;
+                                
+                    default:
+                        break;
+                }
             }
         }
     }
-    document.onmouseup = function(e){
-        document.onmouseover = function(e){
-            if (e.target.className === "square") {
-                e.target.style.backgroundColor = "none";
-                e.target.style.borderColor = "none";
+    
+     document.onmouseup = function(e){
+   
+         document.onmouseover = function(e){
+    
+             if (e.target.className === "square") {
+    
+                 e.target.style.backgroundColor = "none";
+                 e.target.style.borderColor = "none";
+             }
+         }
+     }
+ }
+
+function getHue(currentHue, initialHue, finalHue){
+    let hueValue = undefined;
+
+    switch (selectedType) {
+        case 'random':
+            hueValue = getRandomInt(initialHue, finalHue);
+            break;
+
+        case 'gradient':
+            if(currentHue === 0){
+                currentHue = initialHue;
+            } else if (currentHue >= finalHue){
+                toggleGradient = -1;
+            } else if (currentHue <= initialHue){
+                toggleGradient = 1;
             }
-        }
+            hueValue = currentHue + (2 * toggleGradient);   
+            console.log(currentHue);
+            break;
+
+        default:
+            break;
     }
+
+    return hueValue;
 }
 
 function getRandomInt(min, max) {
@@ -60,36 +123,21 @@ function clearGrid(){
     setGrid(gridSize);
 }
 
-function setColors(){
+function getPalette(){
     const option = document.querySelector('input[name="color"]:checked');
-    //console.log(option.value);
+
+    //Initialize hue when color palette change
+    currentHue = 0;
+
     if (option) {
-        colorPalette = getColors(option.value);
+        selectedPalette = option.value;
     }
 }
 
-function getColors(userSelection){
-    let colors = undefined;
+function getType(){
+    const option = document.querySelector('input[name="type"]:checked');
 
-    switch (userSelection) {
-        case "black":
-            colors=['black'];
-            break;
-
-        case "rainbow":
-            colors=['#ff0000', '#fc4444', '#fc6404', '#fcd444', '#8cc43c', '#029658', '#1abc9c', '#5bc0de', '#6454ac', '#fc8c84'];
-            break;
-
-        case "cold":
-            colors=['#344464', '#548ca4', '#549cac', '#2c445c', '#a4ccd4', '#acbccc', '#b4c4d4', '#acd4cc', '#5c8ca4', '#52b3d0'];
-            break;
-
-        case "warm":
-            colors=['#793f0d', '#ac703d', '#e49969', '#6e7649', '#9d9754', '#dfd27c', '#dbca69', '#855723', '#eec59a', '#c7c397'];
-            break;
-                    
-        default:
-            break;
+    if (option) {
+        selectedType = option.value;
     }
-    return(colors);
 }
