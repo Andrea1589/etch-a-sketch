@@ -9,7 +9,6 @@ setGrid(16);
 drawSketch();
 
 function drawSketch(){
-    console.log(document.eve)
     document.onmousedown = function(e){
 
         document.onmouseover = function(e){
@@ -23,19 +22,19 @@ function drawSketch(){
                         break;
 
                     case 'rainbow':
-                        currentHue = getHue(currentHue,1,256);
+                        currentHue = getHue(currentHue,1,256); //All color from 1 to 256
                         e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 60%)`;
                         e.target.style.borderColor = `hsl(${currentHue}, 80%, 60%)`;
                         break;
 
                     case 'cold':
-                        currentHue = getHue(currentHue,160,255); //
+                        currentHue = getHue(currentHue,150,256); //Cold colors between 160 and 255
                         e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 65%)`;
                         e.target.style.borderColor = `hsl(${currentHue}, 80%, 65%)`;
                         break;
 
                     case 'warm':
-                        currentHue = getHue(currentHue,1,100); //Warm colors from 1 to 100
+                        currentHue = getHue(currentHue,1,120); //Warm colors between 1 and 100
                         e.target.style.backgroundColor = `hsl(${currentHue}, 70%, 40%)`;
                         e.target.style.borderColor = `hsl(${currentHue}, 70%, 40%)`;
                         break;
@@ -60,24 +59,24 @@ function drawSketch(){
      }
  }
 
-function getHue(currentHue, initialHue, finalHue){
+function getHue(currentHue, initialHueRange, finalHueRange){
     let hueValue = undefined;
 
     switch (selectedType) {
         case 'random':
-            hueValue = getRandomInt(initialHue, finalHue);
+            hueValue = getRandomInt(initialHueRange, finalHueRange);
             break;
 
         case 'gradient':
             if(currentHue === 0){
-                currentHue = initialHue;
-            } else if (currentHue >= finalHue){
+                currentHue = initialHueRange;
+            } else if (currentHue >= finalHueRange){
                 toggleGradient = -1;
-            } else if (currentHue <= initialHue){
+            } else if (currentHue <= initialHueRange){
                 toggleGradient = 1;
             }
             hueValue = currentHue + (2 * toggleGradient);   
-            console.log(currentHue);
+            //console.log(currentHue);
             break;
 
         default:
