@@ -18,22 +18,41 @@ body{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+
+    background: radial-gradient(at bottom right, #c3c3c3 0, #c3c3c3 8px, rgba(195,195,195,0.2) 8px, rgba(195,195,195,0.2) 16px, rgba(195,195,195,0.75) 16px, rgba(195,195,195,0.75) 24px, rgba(195,195,195,0.25) 24px, rgba(195,195,195,0.25) 32px, rgba(195,195,195,0.3) 32px, rgba(195,195,195,0.3) 40px, rgba(195,195,195,0.75) 40px, rgba(195,195,195,0.75) 48px, rgba(195,195,195,0.2) 48px, rgba(195,195,195,0.2) 56px, transparent 56px, transparent 64px), radial-gradient(at top left, transparent 0, transparent 8px, rgba(195,195,195,0.2) 8px, rgba(195,195,195,0.2) 16px, rgba(195,195,195,0.75) 16px, rgba(195,195,195,0.75) 24px, rgba(195,195,195,0.3) 24px, rgba(195,195,195,0.3) 32px, rgba(195,195,195,0.25) 32px, rgba(195,195,195,0.25) 40px, rgba(195,195,195,0.75) 40px, rgba(195,195,195,0.75) 48px, rgba(195,195,195,0.2) 48px, rgba(195,195,195,0.2) 56px, #c3c3c3 56px, #c3c3c3 64px, transparent 64px, transparent 160px);
+    background-blend-mode: multiply;
+    background-size: 64px 64px, 64px 64px;
+    background-color: #9e9e9e;
 }
 
 .app{
     display: flex;
     flex-direction: column;
     background: #e50616;
-    padding: 0px 30px 30px 30px;
+    padding: 0 30px 30px 0;
     margin: 15px 0;
     border-radius: 15px;
     align-items: center;
+    filter: drop-shadow(
+        1px 2px 8px var(--shadow-color)
+    );
+}
+
+.darker.app{
+    --shadow-color: #460101;
 }
 
 .header{
     font-family: 'Nerko One', cursive;    
-    color: #3c0a00;
+    color: #eeed24;
     font-size: 32px;
+    text-shadow: 5px;
+}
+
+.footer{
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: white;
 }
 
 h1{
@@ -69,10 +88,10 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 25px;
-    margin-left: 15px;
-    margin-right: 15px;
     align-items: center;
-    width: 200px;
+    width: 150px;
+    color: white;
+    margin: 15px;
 }
 
 .size{
