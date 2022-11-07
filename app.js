@@ -25,15 +25,15 @@ function drawSketch(){
                             break;
 
                         case 'rainbow':
-                            currentHue = getHue(currentHue,1,256); //All color from 1 to 256
+                            currentHue = getHue(currentHue,1,360); //All color from 1 to 256
                             e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 60%)`;
                             e.target.style.borderColor = `hsl(${currentHue}, 80%, 60%)`;
                             break;
 
                         case 'cold':
-                            currentHue = getHue(currentHue,150,256); //Cold colors between 160 and 255
-                            e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 65%)`;
-                            e.target.style.borderColor = `hsl(${currentHue}, 80%, 65%)`;
+                            currentHue = getHue(currentHue,170,250); //Cold colors between 160 and 255
+                            e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 70%)`;
+                            e.target.style.borderColor = `hsl(${currentHue}, 80%, 70%)`;
                             break;
 
                         case 'warm':
