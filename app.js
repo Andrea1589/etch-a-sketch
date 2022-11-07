@@ -1,9 +1,11 @@
+//Global variables
 let selectedPalette = undefined;
 let selectedType = undefined;
 let selectedTool = undefined;
 let currentHue = undefined;
 let toggleGradient = 1;
 
+//Initialization
 getTool(); 
 getPalette();
 getType();
@@ -25,19 +27,19 @@ function drawSketch(){
                             break;
 
                         case 'rainbow':
-                            currentHue = getHue(currentHue,1,360); //All color from 1 to 256
+                            currentHue = getHue(currentHue,1,360); //All colors from 1 to 360
                             e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 60%)`;
                             e.target.style.borderColor = `hsl(${currentHue}, 80%, 60%)`;
                             break;
 
                         case 'cold':
-                            currentHue = getHue(currentHue,170,250); //Cold colors between 160 and 255
+                            currentHue = getHue(currentHue,170,250); //Colors between 170 and 250
                             e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 70%)`;
                             e.target.style.borderColor = `hsl(${currentHue}, 80%, 70%)`;
                             break;
 
                         case 'warm':
-                            currentHue = getHue(currentHue,1,120); //Warm colors between 1 and 100
+                            currentHue = getHue(currentHue,1,120); //Colors between 1 and 120
                             e.target.style.backgroundColor = `hsl(${currentHue}, 70%, 40%)`;
                             e.target.style.borderColor = `hsl(${currentHue}, 70%, 40%)`;
                             break;
@@ -83,7 +85,6 @@ function getHue(currentHue, initialHueRange, finalHueRange){
                 toggleGradient = 1;
             }
             hueValue = currentHue + (2 * toggleGradient);   
-            //console.log(currentHue);
             break;
 
         default:
@@ -129,22 +130,44 @@ function clearGrid(){
     setGrid(gridSize);
 }
 
+function getTool(){
+    const option = document.querySelector('input[name="tool"]:checked');
+
+    if (option) {
+        selectedTool = option.value;
+    }
+
+    if (selectedTool === 'eraser'){
+        //Hide the PALETTE and TYPE fieldset
+        document.getElementById("palette").style.display = "none";
+        document.getElementById("type").style.display = "none";
+        //Initialize PALETTE as Black just when the fieldset is been hidden
+        document.getElementsByName("color")[0].checked = true;
+        getPalette();
+    } else if (selectedTool === 'pen'){
+        //Show the PALETTE and TYPE fieldset
+        document.getElementById("palette").style.display = "block";
+        document.getElementById("type").style.display = "none";
+    }
+}
+
 function getPalette(){
     const option = document.querySelector('input[name="color"]:checked');
-    //Initialize hue when color palette change:
+    //Initialize HUE when color palette change
     currentHue = 0;
 
     if (option) {
         selectedPalette = option.value;
     }
 
-    //Show or hide "TYPE" fieldset
     if (selectedPalette === 'black'){
+        //Hide the TYPE fieldset
         document.getElementById("type").style.display = "none";
-
-    } else {
+        //Initialize TYPE as Random just when the fieldset is been hidden
         document.getElementsByName("type")[0].checked = true;
         getType();
+    } else {
+        //Show the TYPE fieldset
         document.getElementById("type").style.display = "block";
     }
 }
@@ -154,25 +177,5 @@ function getType(){
 
     if (option) {
         selectedType = option.value;
-    }
-}
-
-function getTool(){
-    const option = document.querySelector('input[name="tool"]:checked');
-
-    if (option) {
-        selectedTool = option.value;
-    }
-
-    //Show or hide "PALETTE" and "TYPE" fieldset
-    if (selectedTool === 'eraser'){
-        document.getElementById("palette").style.display = "none";
-        document.getElementById("type").style.display = "none";
-
-    } else if (selectedTool === 'pen'){
-        document.getElementsByName("color")[0].checked = true;
-        getPalette();
-        document.getElementById("palette").style.display = "block";
-        document.getElementById("type").style.display = "none";
     }
 }
