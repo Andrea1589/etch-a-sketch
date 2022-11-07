@@ -21,7 +21,21 @@
                     <input type="range" id="grid-range" name="grid-range" min="16" max="96" step="16" value="16" onchange="showGrid(this.value)">
                 </div>
 
-                <fieldset onchange="getPalette()">
+                <fieldset onchange="getTool()">
+                    <legend>TOOL</legend>
+                
+                    <div>
+                    <input type="radio" id="pen" name="tool" value="pen" checked>
+                    <label for="pen">Pen</label>
+                    </div>
+                
+                    <div>
+                    <input type="radio" id="eraser" name="tool" value="eraser">
+                    <label for="eraser">Eraser</label>
+                    </div>
+                </fieldset>            
+
+                <fieldset id="palette" onchange="getPalette()">
                     <legend>PALETTE</legend>
                 
                     <div>
@@ -45,7 +59,7 @@
                     </div>
                 </fieldset>            
 
-                <fieldset onchange="getType()">
+                <fieldset id="type" onchange="getType()">
                     <legend>TYPE</legend>
                 
                     <div>
@@ -60,7 +74,6 @@
                 </fieldset>            
 
                 <button onclick="clearGrid()">CLEAR</button>            
-                <button onclick="eraseGrid()">ERASE</button>            
             </div>
 
             <div id="grid">
