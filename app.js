@@ -1,5 +1,6 @@
 //Global variables
 let selectedPalette = undefined;
+let selectedColor = undefined;
 let selectedType = undefined;
 let selectedTool = undefined;
 let currentHue = undefined;
@@ -22,8 +23,8 @@ function drawSketch(){
             if (selectedTool === 'pen'){
                 switch (selectedPalette) {
                         case 'black':
-                            e.target.style.backgroundColor = 'black';
-                            e.target.style.borderColor = 'black';
+                            e.target.style.backgroundColor = selectedColor;
+                            e.target.style.borderColor = selectedColor;
                             break;
 
                         case 'rainbow':
@@ -142,7 +143,7 @@ function getTool(){
         document.getElementById("palette").style.display = "none";
         document.getElementById("type").style.display = "none";
         //Initialize PALETTE as Black just when the fieldset is been hidden
-        document.getElementsByName("color")[0].checked = true;
+        document.getElementsByName("palette")[0].checked = true;
         getPalette();
     } else if (selectedTool === 'pen'){
         //Show the PALETTE and TYPE fieldset
@@ -152,7 +153,7 @@ function getTool(){
 }
 
 function getPalette(){
-    const option = document.querySelector('input[name="color"]:checked');
+    const option = document.querySelector('input[name="palette"]:checked');
     //Initialize HUE when color palette change
     currentHue = 0;
 
@@ -166,9 +167,13 @@ function getPalette(){
         //Initialize TYPE as Random just when the fieldset is been hidden
         document.getElementsByName("type")[0].checked = true;
         getType();
+        //Get current color
+        document.getElementById("color-picker").disabled = false;
+        //getCurrentColor();
     } else {
         //Show the TYPE fieldset
         document.getElementById("type").style.display = "block";
+        document.getElementById("color-picker").disabled = true;
     }
 }
 
@@ -178,4 +183,9 @@ function getType(){
     if (option) {
         selectedType = option.value;
     }
+}
+
+function getCurrentColor(){
+    const colorPicker = document.getElementById("color-picker");
+    selectedColor = colorPicker.value;
 }
