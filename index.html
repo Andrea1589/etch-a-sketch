@@ -40,22 +40,23 @@
                         <legend>PALETTE</legend>
                     
                         <div>
-                        <input type="radio" id="black" name="color" value="black" checked>
-                        <label for="black">Black</label>
+                        <input type="radio" id="black" name="palette" value="black" checked>
+                        <label for="black">One color:</label>
+                        <input id="color-picker" type="color" onchange="getCurrentColor()">
                         </div>
                     
                         <div>
-                        <input type="radio" id="rainbow" name="color" value="rainbow">
+                        <input type="radio" id="rainbow" name="palette" value="rainbow">
                         <label for="rainbow">Rainbow</label>
                         </div>
                     
                         <div>
-                            <input type="radio" id="cold" name="color" value="cold">
+                            <input type="radio" id="cold" name="palette" value="cold">
                             <label for="cold">Cold</label>
                         </div>
                     
                         <div>
-                            <input type="radio" id="warm" name="color" value="warm">
+                            <input type="radio" id="warm" name="palette" value="warm">
                             <label for="warm">Warm</label>
                         </div>
                     </fieldset>            
