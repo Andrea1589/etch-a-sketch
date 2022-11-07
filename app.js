@@ -4,7 +4,7 @@ let selectedTool = undefined;
 let currentHue = undefined;
 let toggleGradient = 1;
 
-getTool();
+getTool(); 
 getPalette();
 getType();
 setGrid(16);
@@ -143,6 +143,8 @@ function getPalette(){
         document.getElementById("type").style.display = "none";
 
     } else {
+        document.getElementsByName("type")[0].checked = true;
+        getType();
         document.getElementById("type").style.display = "block";
     }
 }
@@ -168,7 +170,9 @@ function getTool(){
         document.getElementById("type").style.display = "none";
 
     } else if (selectedTool === 'pen'){
+        document.getElementsByName("color")[0].checked = true;
+        getPalette();
         document.getElementById("palette").style.display = "block";
-        document.getElementById("type").style.display = "block";
+        document.getElementById("type").style.display = "none";
     }
 }
