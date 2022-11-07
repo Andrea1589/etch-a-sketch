@@ -16,62 +16,64 @@
         <div class="container">
             <div class="options">
 
-                <div class="size">
-                    <label for="grid-range" id="grid-size">SIZE: 16 x 16</label>
-                    <input type="range" id="grid-range" name="grid-range" min="16" max="96" step="16" value="16" onchange="showGrid(this.value)">
+                <div class="settings">
+                    <div class="size">
+                        <label for="grid-range" id="grid-size">SIZE: 16 x 16</label>
+                        <input type="range" id="grid-range" name="grid-range" min="16" max="96" step="16" value="16" onchange="showGrid(this.value)">
+                    </div>
+
+                    <fieldset onchange="getTool()">
+                        <legend>TOOL</legend>
+                    
+                        <div>
+                        <input type="radio" id="pen" name="tool" value="pen" checked>
+                        <label for="pen">Pen</label>
+                        </div>
+                    
+                        <div>
+                        <input type="radio" id="eraser" name="tool" value="eraser">
+                        <label for="eraser">Eraser</label>
+                        </div>
+                    </fieldset>            
+
+                    <fieldset id="palette" onchange="getPalette()">
+                        <legend>PALETTE</legend>
+                    
+                        <div>
+                        <input type="radio" id="black" name="color" value="black" checked>
+                        <label for="black">Black</label>
+                        </div>
+                    
+                        <div>
+                        <input type="radio" id="rainbow" name="color" value="rainbow">
+                        <label for="rainbow">Rainbow</label>
+                        </div>
+                    
+                        <div>
+                            <input type="radio" id="cold" name="color" value="cold">
+                            <label for="cold">Cold</label>
+                        </div>
+                    
+                        <div>
+                            <input type="radio" id="warm" name="color" value="warm">
+                            <label for="warm">Warm</label>
+                        </div>
+                    </fieldset>            
+
+                    <fieldset id="type" onchange="getType()">
+                        <legend>TYPE</legend>
+                    
+                        <div>
+                        <input type="radio" id="random" name="type" value="random" checked>
+                        <label for="random">Random</label>
+                        </div>
+                    
+                        <div>
+                        <input type="radio" id="gradient" name="type" value="gradient">
+                        <label for="gradient">Gradient</label>
+                        </div>
+                    </fieldset>            
                 </div>
-
-                <fieldset onchange="getTool()">
-                    <legend>TOOL</legend>
-                
-                    <div>
-                    <input type="radio" id="pen" name="tool" value="pen" checked>
-                    <label for="pen">Pen</label>
-                    </div>
-                
-                    <div>
-                    <input type="radio" id="eraser" name="tool" value="eraser">
-                    <label for="eraser">Eraser</label>
-                    </div>
-                </fieldset>            
-
-                <fieldset id="palette" onchange="getPalette()">
-                    <legend>PALETTE</legend>
-                
-                    <div>
-                    <input type="radio" id="black" name="color" value="black" checked>
-                    <label for="black">Black</label>
-                    </div>
-                
-                    <div>
-                    <input type="radio" id="rainbow" name="color" value="rainbow">
-                    <label for="rainbow">Rainbow</label>
-                    </div>
-                
-                    <div>
-                        <input type="radio" id="cold" name="color" value="cold">
-                        <label for="cold">Cold</label>
-                    </div>
-                
-                    <div>
-                        <input type="radio" id="warm" name="color" value="warm">
-                        <label for="warm">Warm</label>
-                    </div>
-                </fieldset>            
-
-                <fieldset id="type" onchange="getType()">
-                    <legend>TYPE</legend>
-                
-                    <div>
-                    <input type="radio" id="random" name="type" value="random" checked>
-                    <label for="random">Random</label>
-                    </div>
-                
-                    <div>
-                    <input type="radio" id="gradient" name="type" value="gradient">
-                    <label for="gradient">Gradient</label>
-                    </div>
-                </fieldset>            
 
                 <button onclick="clearGrid()">CLEAR</button>            
             </div>
