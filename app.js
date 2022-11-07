@@ -1,8 +1,10 @@
 let selectedPalette = undefined;
 let selectedType = undefined;
+let selectedTool = undefined;
 let currentHue = undefined;
 let toggleGradient = 1;
 
+getTool();
 getPalette();
 getType();
 setGrid(16);
@@ -15,34 +17,39 @@ function drawSketch(){
 
             if (e.target.className == "square") {
 
-            switch (selectedPalette) {
-                    case 'black':
-                        e.target.style.backgroundColor = 'black';
-                        e.target.style.borderColor = 'black';
-                        break;
+            if (selectedTool === 'pen'){
+                switch (selectedPalette) {
+                        case 'black':
+                            e.target.style.backgroundColor = 'black';
+                            e.target.style.borderColor = 'black';
+                            break;
 
-                    case 'rainbow':
-                        currentHue = getHue(currentHue,1,256); //All color from 1 to 256
-                        e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 60%)`;
-                        e.target.style.borderColor = `hsl(${currentHue}, 80%, 60%)`;
-                        break;
+                        case 'rainbow':
+                            currentHue = getHue(currentHue,1,256); //All color from 1 to 256
+                            e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 60%)`;
+                            e.target.style.borderColor = `hsl(${currentHue}, 80%, 60%)`;
+                            break;
 
-                    case 'cold':
-                        currentHue = getHue(currentHue,150,256); //Cold colors between 160 and 255
-                        e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 65%)`;
-                        e.target.style.borderColor = `hsl(${currentHue}, 80%, 65%)`;
-                        break;
+                        case 'cold':
+                            currentHue = getHue(currentHue,150,256); //Cold colors between 160 and 255
+                            e.target.style.backgroundColor = `hsl(${currentHue}, 80%, 65%)`;
+                            e.target.style.borderColor = `hsl(${currentHue}, 80%, 65%)`;
+                            break;
 
-                    case 'warm':
-                        currentHue = getHue(currentHue,1,120); //Warm colors between 1 and 100
-                        e.target.style.backgroundColor = `hsl(${currentHue}, 70%, 40%)`;
-                        e.target.style.borderColor = `hsl(${currentHue}, 70%, 40%)`;
-                        break;
-                                
-                    default:
-                        break;
+                        case 'warm':
+                            currentHue = getHue(currentHue,1,120); //Warm colors between 1 and 100
+                            e.target.style.backgroundColor = `hsl(${currentHue}, 70%, 40%)`;
+                            e.target.style.borderColor = `hsl(${currentHue}, 70%, 40%)`;
+                            break;
+                                    
+                        default:
+                            break;
+                    }
+                } else if (selectedTool==='eraser') {
+                    e.target.style.backgroundColor = 'white';
+                    e.target.style.borderColor = 'gainsboro';
                 }
-            }
+            } 
         }
     }
     
@@ -124,12 +131,19 @@ function clearGrid(){
 
 function getPalette(){
     const option = document.querySelector('input[name="color"]:checked');
-
-    //Initialize hue when color palette change
+    //Initialize hue when color palette change:
     currentHue = 0;
 
     if (option) {
         selectedPalette = option.value;
+    }
+
+    //Show or hide "TYPE" fieldset
+    if (selectedPalette === 'black'){
+        document.getElementById("type").style.display = "none";
+
+    } else {
+        document.getElementById("type").style.display = "block";
     }
 }
 
@@ -138,5 +152,23 @@ function getType(){
 
     if (option) {
         selectedType = option.value;
+    }
+}
+
+function getTool(){
+    const option = document.querySelector('input[name="tool"]:checked');
+
+    if (option) {
+        selectedTool = option.value;
+    }
+
+    //Show or hide "PALETTE" and "TYPE" fieldset
+    if (selectedTool === 'eraser'){
+        document.getElementById("palette").style.display = "none";
+        document.getElementById("type").style.display = "none";
+
+    } else if (selectedTool === 'pen'){
+        document.getElementById("palette").style.display = "block";
+        document.getElementById("type").style.display = "block";
     }
 }
