@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Nerko+One&display=swap');
 
 html{
     box-sizing: border-box;
@@ -13,11 +13,10 @@ body{
     margin: 0;
     align-items: center;
     overflow: hidden;
-    font-family: 'Nerko One', cursive;    
+    font-family: 'Baloo 2', cursive;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-
     background: radial-gradient(at bottom right, #c3c3c3 0, #c3c3c3 8px, rgba(195,195,195,0.2) 8px, rgba(195,195,195,0.2) 16px, rgba(195,195,195,0.75) 16px, rgba(195,195,195,0.75) 24px, rgba(195,195,195,0.25) 24px, rgba(195,195,195,0.25) 32px, rgba(195,195,195,0.3) 32px, rgba(195,195,195,0.3) 40px, rgba(195,195,195,0.75) 40px, rgba(195,195,195,0.75) 48px, rgba(195,195,195,0.2) 48px, rgba(195,195,195,0.2) 56px, transparent 56px, transparent 64px), radial-gradient(at top left, transparent 0, transparent 8px, rgba(195,195,195,0.2) 8px, rgba(195,195,195,0.2) 16px, rgba(195,195,195,0.75) 16px, rgba(195,195,195,0.75) 24px, rgba(195,195,195,0.3) 24px, rgba(195,195,195,0.3) 32px, rgba(195,195,195,0.25) 32px, rgba(195,195,195,0.25) 40px, rgba(195,195,195,0.75) 40px, rgba(195,195,195,0.75) 48px, rgba(195,195,195,0.2) 48px, rgba(195,195,195,0.2) 56px, #c3c3c3 56px, #c3c3c3 64px, transparent 64px, transparent 160px);
     background-blend-mode: multiply;
     background-size: 64px 64px, 64px 64px;
@@ -93,7 +92,7 @@ h1{
     align-items: center;
     color: white;
     margin: 20px;
-    justify-content:space-around;
+    justify-content:space-between;
 }
 
 .size{
@@ -134,8 +133,8 @@ button:active {
 }
 
 button, legend, label{
-    font-family: 'Nerko One', cursive;    
-    font-size: 20px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
 }
 
 button:hover{
