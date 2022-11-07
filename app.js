@@ -169,7 +169,7 @@ function getPalette(){
         getType();
         //Get current color
         document.getElementById("color-picker").disabled = false;
-        //getCurrentColor();
+        getCurrentColor();
     } else {
         //Show the TYPE fieldset
         document.getElementById("type").style.display = "block";
