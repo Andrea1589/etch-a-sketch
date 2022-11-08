@@ -22,3 +22,6 @@ Just clone down this repository.
 ## Credits
 Body background:
 "Discrete Cubes" pattern is inspired from the pen on CodePen.io created by Ana Tudor.
+
+Eraser picture:
+Eraser and brush icons created by Freepik - Flaticon https://www.flaticon.com/free-icons/eraser
