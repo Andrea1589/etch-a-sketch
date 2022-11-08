@@ -79,6 +79,7 @@ h1{
     border-width: 1px;
     border-color: gainsboro;
     width: 100%;
+    transition: 0.3s;
 }
 
 .container {
